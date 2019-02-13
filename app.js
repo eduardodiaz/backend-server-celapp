@@ -20,6 +20,13 @@ app.use(bodyParser.json())
 var appRoutes = require('./routes/app');
 var usuarioRoutes = require('./routes/usuario');
 var loginRoutes = require('./routes/login');
+var informeRoutes = require('./routes/informe');
+var busquedaRoutes = require('./routes/busqueda');
+var uploadRoutes = require('./routes/upload');
+var imagenesRoutes = require('./routes/imagenes');
+
+
+
 
 
 
@@ -33,10 +40,20 @@ mongoose.connection.openUri('mongodb://localhost:27017/celappDB', (err, res) => 
 
 });
 
+//Server index config
+//var serveIndex = require('serve-index');
+//app.use(express.static(__dirname + '/'));
+//app.use('/uploads', serveIndex(__dirname + '/uploads'));
+
 
 //Rutas
 app.use('/usuario', usuarioRoutes);
 app.use('/login', loginRoutes);
+app.use('/informe', informeRoutes);
+app.use('/busqueda', busquedaRoutes);
+app.use('/upload', uploadRoutes);
+app.use('/img', imagenesRoutes);
+
 app.use('/', appRoutes);
 
 
